@@ -1,0 +1,50 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.5'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'java'
+	id 'checkstyle'
+	id "io.freefair.lombok" version "6.5.1"
+	id 'com.github.akazver.mapstruct' version '1.0.1'
+}
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+group = 'huper.digital'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.apache.commons:commons-collections4:4.4'
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+
+	runtimeOnly 'com.h2database:h2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+checkstyle {
+	toolVersion '10.3.1'
+//        configFile rootProject.file("checkstyle.xml")
+	//false = fail at the build time
+	ignoreFailures = false
+	maxWarnings = 0
+}
