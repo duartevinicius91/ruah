@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,7 +40,7 @@ public class ServicoController {
   }
 
   @PostMapping
-  public ResponseEntity create(@Valid ServicoDto servicoRequest) {
+  public ResponseEntity create(@Valid @RequestBody ServicoDto servicoRequest) {
     return ResponseEntity.created(URI.create("/servicos/" + servicoService.save(servicoRequest))).build();
   }
 

@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class ColaboradorDto {
   private String nome;
-  private LocalDate nascimento;
+  private String telefone;
   private List<Long> servicosId;
+  private List<ServicoDto> servicos;
 }

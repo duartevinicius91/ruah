@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
+import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface ServicoMapper {

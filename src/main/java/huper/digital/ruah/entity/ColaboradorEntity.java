@@ -23,8 +23,7 @@ public class ColaboradorEntity {
   @Size(min = 3)
   private String nome;
 
-  @Past
-  private LocalDate nascimento;
+  private String telefone;
 
   @PastOrPresent
   private LocalDateTime dataCriacao;

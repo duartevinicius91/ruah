@@ -7,6 +7,8 @@ import huper.digital.ruah.repository.ColaboradorRepository;
 import huper.digital.ruah.repository.ServicoRepository;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.persistence.EntityNotFoundException;
+import javax.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -36,17 +38,25 @@ public class ColaboradorService implements DefaultService<ColaboradorDto> {
 
   @Override
   public ColaboradorDto findById(Long id) {
-
-    return null;
+    return colaboradorRepository.findById(id)
+        .map(mapper::toDto)
+        .orElseThrow(() -> new EntityNotFoundException());
   }
 
   @Override
   public void deleteById(Long id) {
-
+    colaboradorRepository.findById(id)
+        .ifPresentOrElse(colaborador -> colaboradorRepository.delete(colaborador), () -> new EntityNotFoundException());
   }
 
   @Override
-  public void update(Long id, ColaboradorDto dto) {
+  public void update(@NotNull Long id, ColaboradorDto dto) {
+    var colaboradorEntity = mapper.toEntity(dto);
+
+    colaboradorEntity.setServicos(servicoRepository.findAllById(dto.getServicosId()));
+
+    colaboradorEntity.setId(id);
+    colaboradorRepository.save(colaboradorEntity);
 
   }
 

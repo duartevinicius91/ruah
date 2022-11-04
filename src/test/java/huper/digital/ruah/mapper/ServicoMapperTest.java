@@ -11,19 +11,15 @@ import org.mapstruct.factory.Mappers;
 
 class ServicoMapperTest {
 
-  private static ServicoMapper servicoMapper;
+  private static ServicoMapper servicoMapper = Mappers.getMapper( ServicoMapper.class );
 
-  @BeforeAll
-  static void beforeAll() {
-    servicoMapper = Mappers.getMapper( ServicoMapper.class );
-  }
 
   @Test
   @DisplayName("Deve converter um request de servico para entidade de serviço sem erros")
   public void shouldMapCarToDto() {
-    var ent = servicoMapper.toEntity(ServicoHelper.create());
 
-    //then
+    var ent = servicoMapper.toEntity(ServicoHelper.createDto());
+
     assertNotNull(ent);
     assertEquals(ServicoHelper.NOME_DO_SERVICO, ent.getNome());
     assertEquals(ServicoHelper.VALOR, ent.getValor());
