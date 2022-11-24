@@ -16,5 +16,5 @@ public interface ColaboradorMapper {
   }
 
   ColaboradorEntity toEntity(ColaboradorDto colaboradorDto);
-  
+
 }

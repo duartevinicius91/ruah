@@ -1,6 +1,5 @@
 package huper.digital.ruah.dto;
 
-import java.time.LocalDate;
 import java.util.List;
 import lombok.Data;
 

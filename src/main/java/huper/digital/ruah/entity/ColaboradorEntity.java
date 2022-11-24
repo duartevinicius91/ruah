@@ -1,13 +1,11 @@
 package huper.digital.ruah.entity;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 import lombok.Data;

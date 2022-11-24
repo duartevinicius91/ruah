@@ -5,7 +5,6 @@ import static org.apache.commons.lang3.StringUtils.firstNonBlank;
 
 import huper.digital.ruah.dto.ServicoDto;
 import huper.digital.ruah.mapper.ServicoMapper;
-import huper.digital.ruah.repository.ColaboradorRepository;
 import huper.digital.ruah.repository.ServicoRepository;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,16 +22,19 @@ public class ServicoService implements DefaultService<ServicoDto> {
 
   @Override
   public List<ServicoDto> listAll() {
-    return servicoRepository.findAll().stream().map(servicoMapper::toDto).collect(Collectors.toList());
+    return servicoRepository.findAll()
+        .stream()
+        .map(servicoMapper::toDto)
+        .collect(Collectors.toList());
   }
 
   @Override
   public Long save(@Valid ServicoDto newServicoDto) {
 
-      var servicoEntity = servicoRepository.save(servicoMapper.toEntity(newServicoDto));
-      servicoRepository.save(servicoEntity);
+    var servicoEntity = servicoRepository.save(servicoMapper.toEntity(newServicoDto));
+    servicoRepository.save(servicoEntity);
 
-      return servicoEntity.getId();
+    return servicoEntity.getId();
   }
 
   @Override

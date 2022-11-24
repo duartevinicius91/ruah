@@ -1,30 +1,21 @@
 package huper.digital.ruah.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoInteractions;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 import huper.digital.ruah.dto.ColaboradorDto;
 import huper.digital.ruah.entity.ColaboradorEntity;
 import huper.digital.ruah.helper.ColaboradoresHelper;
 import huper.digital.ruah.mapper.ColaboradorMapper;
-import huper.digital.ruah.mapper.ServicoMapper;
 import huper.digital.ruah.repository.ColaboradorRepository;
 import huper.digital.ruah.repository.ServicoRepository;
-import java.util.List;
 import java.util.Objects;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.mapstruct.factory.Mappers;
-import org.mockito.verification.VerificationMode;
-
 
 class ColaboradorServiceTest {
 
@@ -38,14 +29,17 @@ class ColaboradorServiceTest {
     colaboradorRepository = mock(ColaboradorRepository.class);
     colaboradorMapper = mock(ColaboradorMapper.class);
     servicoRepository = mock(ServicoRepository.class);
-    colaboradorService = new ColaboradorService(colaboradorRepository, colaboradorMapper, servicoRepository);
+    colaboradorService = new ColaboradorService(colaboradorRepository,
+                                                  colaboradorMapper,
+                                                  servicoRepository);
   }
-
 
   @Test
   void listAll() {
-    when(colaboradorRepository.findAll()).thenReturn(ColaboradoresHelper.createEntityList());
-    when(colaboradorMapper.toDto(any(ColaboradorEntity.class))).thenReturn(ColaboradoresHelper.createDto());
+    when(colaboradorRepository.findAll())
+        .thenReturn(ColaboradoresHelper.createEntityList());
+    when(colaboradorMapper.toDto(any(ColaboradorEntity.class)))
+        .thenReturn(ColaboradoresHelper.createDto());
 
     var colaboradorDtos = colaboradorService.listAll();
 

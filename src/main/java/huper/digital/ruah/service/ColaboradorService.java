@@ -1,6 +1,5 @@
 package huper.digital.ruah.service;
 
-
 import huper.digital.ruah.dto.ColaboradorDto;
 import huper.digital.ruah.mapper.ColaboradorMapper;
 import huper.digital.ruah.repository.ColaboradorRepository;
@@ -46,7 +45,7 @@ public class ColaboradorService implements DefaultService<ColaboradorDto> {
   @Override
   public void deleteById(Long id) {
     colaboradorRepository.findById(id)
-        .ifPresentOrElse(colaborador -> colaboradorRepository.delete(colaborador), () -> new EntityNotFoundException());
+        .ifPresentOrElse(colaboradorRepository::delete, () -> new EntityNotFoundException());
   }
 
   @Override
@@ -59,6 +58,4 @@ public class ColaboradorService implements DefaultService<ColaboradorDto> {
     colaboradorRepository.save(colaboradorEntity);
 
   }
-
-
 }

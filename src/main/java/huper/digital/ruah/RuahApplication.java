@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class RuahApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(RuahApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(RuahApplication.class, args);
+  }
 
 }

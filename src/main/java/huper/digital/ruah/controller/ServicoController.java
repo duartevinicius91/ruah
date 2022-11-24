@@ -41,7 +41,9 @@ public class ServicoController {
 
   @PostMapping
   public ResponseEntity create(@Valid @RequestBody ServicoDto servicoRequest) {
-    return ResponseEntity.created(URI.create("/servicos/" + servicoService.save(servicoRequest))).build();
+    return ResponseEntity.created(
+        URI.create("/servicos/" + servicoService.save(servicoRequest))
+    ).build();
   }
 
   @PutMapping("{id}")

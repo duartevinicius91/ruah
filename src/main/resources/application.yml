@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    username: ruah
+    url: jdbc:postgresql://localhost:5432/ruah
+    platform: postgres
+    password: ruah
+  jpa:
+    database: POSTGRESQL
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: create-drop
+  database:
+    driverClassName: org.postgresql.Driver

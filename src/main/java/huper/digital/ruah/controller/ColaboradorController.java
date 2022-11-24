@@ -1,7 +1,6 @@
 package huper.digital.ruah.controller;
 
 import huper.digital.ruah.dto.ColaboradorDto;
-import huper.digital.ruah.service.ColaboradorService;
 import huper.digital.ruah.service.DefaultService;
 import java.net.URI;
 import java.util.List;
